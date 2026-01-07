@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  rag-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    volumes:
+      - ./data:/app/data  # Для сохранения истории диалогов
+      - ./logs:/app/logs  # Для логов
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

@@ -25,7 +25,8 @@ class Config:
     MAX_TITLE_LENGTH: int = 100  # Максимальная длина заголовка в чанке
     
     # Настройки эмбеддингов
-    EMBEDDING_MODEL: str = "text-embedding-ada-002"  # Модель для эмбеддингов
+    EMBEDDING_MODEL: str = "text-embedding-ada-002"
+    # Модель для эмбеддингов, по сути не используется;используется бесплатная модель из HuggingFace, смотри vector_store_manager.py
     EMBEDDING_DIMENSION: int = 1536  # Размерность эмбеддингов для ada-002
     
     # Настройки OpenRouter
@@ -36,7 +37,7 @@ class Config:
     LLM_MODEL: str = "meta-llama/llama-3.3-70b-instruct:free"
     
     # Настройки RAG
-    RETRIEVER_K: int = 4  # Сколько чанков возвращать при поиске
+    RETRIEVER_K: int = 10  # Сколько чанков возвращать при поиске
     
     def __post_init__(self):
         # Автоматически создаем директории
